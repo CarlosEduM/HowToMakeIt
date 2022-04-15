@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HowToMakeItAPI.Data;
 
-public class HowToMakeItContext : DbContext
+public class PostgresContext : DbContext
 {
     public DbSet<Tutorial> Tutorials { get; set; }
     public DbSet<Step> Steps { get; set; }
 
-    public HowToMakeItContext(DbContextOptions<HowToMakeItContext> options)
+    public PostgresContext(DbContextOptions<PostgresContext> options)
         : base(options)
     {
     }
