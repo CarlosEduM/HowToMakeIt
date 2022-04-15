@@ -16,6 +16,14 @@ public class TutorialController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<List<Tutorial>> GetAll([FromQuery] string? search) 
-        => (search != null || search != "")? _service.GetSearch(search) : _service.GetAll();
+    public ActionResult<List<Tutorial>> GetAll([FromQuery] string? search)
+        => (search != null || search != "") ? _service.GetSearch(search) : _service.GetAll();
+
+    [HttpGet("{id}")]
+    public IActionResult Get(int id)
+    {
+        var tutorial = _service.GetById(id);
+
+        return (tutorial != null)? Ok(tutorial): NotFound();
+    }
 }

@@ -6,7 +6,7 @@ public interface ITutorialService
 {
     public List<Tutorial> GetAll();
 
-    public List<Tutorial> GetById(int tutorialId);
+    public Tutorial GetById(int tutorialId);
 
     public List<Tutorial> GetSearch(string search);
 

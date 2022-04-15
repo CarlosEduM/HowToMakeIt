@@ -31,14 +31,14 @@ public class TutorialPostgresService : ITutorialService
     public List<Tutorial> GetAll() =>
         _context.Tutorials.Include(tutorial => tutorial.StepByStep).ToList();
 
-    public List<Tutorial> GetById(int tutorialId)
-    {
-        throw new NotImplementedException();
-    }
+    public Tutorial GetById(int tutorialId) => 
+        _context.Tutorials
+            .Include(tutorial => tutorial.StepByStep)
+            .FirstOrDefault(t => t.Id == tutorialId);
 
     public List<Tutorial> GetSearch(string search) =>
         _context.Tutorials
-            .Where(tutorial => tutorial.TutorialName.Contains(search))
             .Include(tutorial => tutorial.StepByStep)
+            .Where(tutorial => tutorial.TutorialName.Contains(search))
             .ToList();
 }
