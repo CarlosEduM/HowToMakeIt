@@ -22,5 +22,9 @@ public class StepEntityTypeConfiguration : IEntityTypeConfiguration<Step>
             .Property(s => s.Description)
             .HasColumnName("description")
             .HasMaxLength(60);
+
+        builder
+            .Property(s => s.TutorialId)
+            .HasColumnName("tutorial_id");
     }
 }
