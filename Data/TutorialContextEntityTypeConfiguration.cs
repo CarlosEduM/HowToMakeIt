@@ -19,6 +19,7 @@ public class TutorialEntityTypeConfiguration : IEntityTypeConfiguration<Tutorial
         builder
             .Property(t => t.TutorialName)
             .HasColumnName("tutorial_name")
-            .HasMaxLength(60);
+            .HasMaxLength(60)
+            .IsRequired();
     }
 }

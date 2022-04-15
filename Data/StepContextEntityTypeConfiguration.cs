@@ -21,10 +21,12 @@ public class StepEntityTypeConfiguration : IEntityTypeConfiguration<Step>
         builder
             .Property(s => s.Description)
             .HasColumnName("description")
-            .HasMaxLength(60);
+            .HasMaxLength(60)
+            .IsRequired();
 
         builder
             .Property(s => s.TutorialId)
-            .HasColumnName("tutorial_id");
+            .HasColumnName("tutorial_id")
+            .IsRequired();
     }
 }
