@@ -4,7 +4,7 @@ namespace HowToMakeItAPI.Models;
 
 public class Step
 {
-    public int Id { get; private set; }
+    public int Id { get; set; }
     public int StepNumber { get; set; }
     public string Description { get; set; }
     public int TutorialId { get; set; }
@@ -30,6 +30,6 @@ public class Step
 
     public Step()
     {
-        
+
     }
 }

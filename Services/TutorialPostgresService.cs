@@ -19,14 +19,16 @@ public class TutorialPostgresService : ITutorialService
         _context.SaveChanges();
     }
 
-    public void Delete(int tutorialId)
+    public void Delete(Tutorial tutorial)
     {
-        throw new NotImplementedException();
+        _context.Tutorials.Remove(tutorial);
+        _context.SaveChanges();
     }
 
-    public void Edit(Tutorial newTutorial)
+    public void Edit(Tutorial tutorial)
     {
-        throw new NotImplementedException();
+        _context.Tutorials.Update(tutorial).State = EntityState.Modified;
+        _context.SaveChanges();
     }
 
     public List<Tutorial> GetAll() =>

@@ -12,8 +12,8 @@ public interface ITutorialService
 
     public void Add(Tutorial newTutorial);
 
-    public void Edit(Tutorial newTutorial);
+    public void Edit(Tutorial tutorial);
 
-    public void Delete(int tutorialId);
+    public void Delete(Tutorial tutorial);
 
 }

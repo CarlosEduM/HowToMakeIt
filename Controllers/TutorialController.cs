@@ -1,6 +1,7 @@
 using HowToMakeItAPI.Models;
 using HowToMakeItAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HowToMakeItAPI.Controllers;
 
@@ -24,7 +25,7 @@ public class TutorialController : ControllerBase
     {
         var tutorial = _service.GetById(id);
 
-        return (tutorial != null)? Ok(tutorial): NotFound();
+        return (tutorial != null) ? Ok(tutorial) : NotFound();
     }
 
     [HttpPost]
@@ -33,5 +34,47 @@ public class TutorialController : ControllerBase
         _service.Add(tutorial);
 
         return CreatedAtAction(nameof(Create), new { id = tutorial.Id }, tutorial);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Edit([FromRoute] int id, [FromBody] Tutorial tutorial)
+    {
+        if (id != tutorial.Id)
+        {
+            return BadRequest();
+        }
+
+        try
+        {
+            _service.Edit(tutorial);
+
+            return NoContent();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (_service.GetById(id) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        Tutorial tutorial = _service.GetById(id);
+
+        if (tutorial == null)
+        {
+            return NotFound();
+        }
+
+        _service.Delete(tutorial);
+
+        return NoContent();
     }
 }

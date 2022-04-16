@@ -4,13 +4,15 @@ namespace HowToMakeItAPI.Models;
 
 public class Tutorial
 {
-    public int Id { get; private set; }
+    public int Id { get; set; }
     public string TutorialName { get; set; }
 
     private readonly List<Step> stepByStep = new List<Step>();
-    public List<Step> StepByStep { 
+    public List<Step> StepByStep
+    {
         get { return stepByStep; }
-        set {
+        set
+        {
             SortSteps(value);
         }
     }
