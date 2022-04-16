@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace HowToMakeItAPI.Models;
 
 public class Step
@@ -15,16 +17,19 @@ public class Step
         TutorialId = tutorialId;
     }
 
-    public Step(int stepNumber, string description, int tutorialId)
+    public Step(int stepNumber, string description)
     {
         StepNumber = stepNumber;
         Description = description;
-        TutorialId = tutorialId;
     }
 
-    public Step(string description, int tutorialId)
+    public Step(string description)
     {
         Description = description;
-        TutorialId = tutorialId;
+    }
+
+    public Step()
+    {
+        
     }
 }

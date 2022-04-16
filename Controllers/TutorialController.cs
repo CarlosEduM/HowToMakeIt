@@ -26,4 +26,12 @@ public class TutorialController : ControllerBase
 
         return (tutorial != null)? Ok(tutorial): NotFound();
     }
+
+    [HttpPost]
+    public IActionResult Create(Tutorial tutorial)
+    {
+        _service.Add(tutorial);
+
+        return CreatedAtAction(nameof(Create), new { id = tutorial.Id }, tutorial);
+    }
 }

@@ -12,7 +12,7 @@ public interface ITutorialService
 
     public void Add(Tutorial newTutorial);
 
-    public void Edit(int tutorialId, Tutorial newTutorial);
+    public void Edit(Tutorial newTutorial);
 
     public void Delete(int tutorialId);
 

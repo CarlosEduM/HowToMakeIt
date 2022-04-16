@@ -15,7 +15,8 @@ public class TutorialPostgresService : ITutorialService
 
     public void Add(Tutorial newTutorial)
     {
-        throw new NotImplementedException();
+        _context.Tutorials.Add(newTutorial);
+        _context.SaveChanges();
     }
 
     public void Delete(int tutorialId)
@@ -23,7 +24,7 @@ public class TutorialPostgresService : ITutorialService
         throw new NotImplementedException();
     }
 
-    public void Edit(int tutorialId, Tutorial newTutorial)
+    public void Edit(Tutorial newTutorial)
     {
         throw new NotImplementedException();
     }
